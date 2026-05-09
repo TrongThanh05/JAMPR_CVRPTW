@@ -1,0 +1,37 @@
+training:
+  lr_init: 0.0001
+  lr_decay_gamma: 0.001
+  grad_clip: 1.0
+
+  # === CPU-LIGHT defaults (phù hợp máy không có GPU) ===
+  n_epochs: 10                  # GPU gốc: 50
+  instances_per_epoch: 64       # GPU gốc: 1024000
+  batch_size_n20: 8             # GPU gốc: 512
+  batch_size_n50: 4             # GPU gốc: 128
+
+  baseline_warmup_epochs: 1
+  baseline_beta: 0.8
+  ttest_alpha: 0.05
+  m_pre: 6
+  m_pre_cvrp: 3
+  seed: 1234
+  save_every: 2
+  log_interval: 1
+  checkpoint_dir: "outputs/checkpoints"
+  log_dir: "outputs/logs"
+
+  # Debug mode (siêu nhẹ, chạy vài giây)
+  debug:
+    n_epochs: 2
+    instances_per_epoch: 8
+    batch_size_n20: 4
+    batch_size_n50: 2
+    save_every: 1
+
+  # === GPU FULL config (uncomment khi có GPU) ===
+  # n_epochs: 50
+  # instances_per_epoch: 1024000
+  # batch_size_n20: 512
+  # batch_size_n50: 128
+  # save_every: 5
+  # log_interval: 50

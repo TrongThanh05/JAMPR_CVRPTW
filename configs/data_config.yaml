@@ -1,0 +1,39 @@
+data:
+  n_customers: [20, 50]
+
+  seeds:
+    train: 1234
+    val: 5678
+    test: 9999
+
+  val_size: 10000
+  test_size: 10000
+
+  cvrp:
+    coord_range: [0.0, 1.0]
+    demand_range: [1, 9]
+    capacity:
+      20: 30
+      50: 40
+    # Max fleet size (K) - model minimizes actual vehicles used
+    n_vehicles:
+      20: 10
+      50: 15
+
+  cvrptw:
+    coord_range: [0, 100]
+    coord_normalize: 100.0
+    demand_mean: 15
+    demand_std: 10
+    demand_clip: [1, 42]
+    time_horizon: 1000
+    service_duration: 10
+    depot_tw: [0, 1000]
+    tw_width_factor: 300
+    capacity:
+      20: 500
+      50: 750
+    # Max fleet size (K) - heuristic: ceil(sum_demand / Q) * 2
+    n_vehicles:
+      20: 10
+      50: 15

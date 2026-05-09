@@ -1,0 +1,22 @@
+model:
+  d_node: 128
+  d_vehicle: 128
+  d_M: 128
+  n_heads: 8
+  n_sa_layers: 3
+  d_ff_hidden: 128
+  d_decoder_hidden: 256
+  tour_encoder_layers: 2
+  vehicle_encoder_layers: 3
+  clip_value: 10.0
+
+  # m_con per problem variant
+  m_con_settings:
+    cvrp_n20: 1
+    cvrp_n50: 1
+    cvrptw_tw1_n20: 3
+    cvrptw_tw1_n50: 4
+    cvrptw_tw2_n20: 3
+    cvrptw_tw2_n50: 3
+    cvrptw_tw3_n20: 1
+    cvrptw_tw3_n50: 1
