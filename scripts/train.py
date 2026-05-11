@@ -77,9 +77,12 @@ def run_training(args):
     # Data
     train_gen = VRPTWDataGenerator()
 
-    # Validation dataset
-    val_path = os.path.join("outputs/data", f"{args.problem}_n{args.n}_val.pt")
+    # Validation dataset — prefer --val-data flag, then default path
     val_dataset = None
+    if args.val_data and os.path.exists(args.val_data):
+        val_path = args.val_data
+    else:
+        val_path = os.path.join("outputs/data", f"{args.problem}_n{args.n}_val.pt")
     if os.path.exists(val_path):
         val_dataset = VRPTWDataset(val_path)
         logger.info("Loaded validation dataset: %s", val_path)
@@ -104,6 +107,8 @@ def main():
     parser.add_argument("--n", type=int, default=20, choices=[20, 50])
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--resume", type=str, default=None)
+    parser.add_argument("--val-data", type=str, default=None,
+                        help="Path to fixed validation data .pt file (e.g. data/vrptw_n20_tw1.pt)")
     args = parser.parse_args()
     run_training(args)
 
