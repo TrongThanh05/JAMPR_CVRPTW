@@ -26,13 +26,18 @@ ENV/
 .coverage
 htmlcov/
 
-# Outputs / checkpoints / logs
+# Outputs / checkpoints / logs  (*.pt here = model checkpoints, NOT data files)
 outputs/
 *.log
 *.ckpt
-*.pt
 *.pth
 wandb/
+
+# Large / redundant data files — NOT needed to run the project
+# (the 6 benchmark files vrptw_n*_tw*.pt are tracked and committed)
+data/*_fixed.pt      # combined files (13–31 MB each), recreate with create_fixed_data.py
+data/*_fixed.txt     # human-readable text (10–25 MB each), recreate with export_to_txt.py
+data/*_summary.txt   # summary text files
 
 # IDE
 .vscode/
